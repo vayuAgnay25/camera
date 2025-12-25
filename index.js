@@ -56,7 +56,7 @@ const formatTime = () => {
   hours = hours % 12 || 12; // Convert to 12h format
   const formattedHours = hours.toString().padStart(2, "0");
 
-  return `${month} ${day}, ${formattedHours}:${minutes} ${ampm}`;
+  return `${month} ${day}, ${year} ${formattedHours}:${minutes} ${ampm}`;
 };
 
 // --- 4. Event Listeners ---
@@ -68,6 +68,7 @@ power.addEventListener("click", async () => {
     rotate: 0,
     duration: 0.8,
   });
+
   if (!powerState) {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -76,7 +77,6 @@ power.addEventListener("click", async () => {
       video.play();
       powerState = true;
     } catch (err) {
-      console.error("Error accessing camera:", err);
     }
   } else {
     shutdown();
