@@ -7,6 +7,8 @@
     <title>Polaroid Camera App</title>
   </head>
   <body>
+    <img src="./Power tooltip.svg" alt="" id="power-tooltip">
+    <h6>Snap a polaroid-style moment :)</h6>
     <div class="cameraBody" id="camera">
       <div class="sensorCategory">
         <button id="power" aria-label="Power Button">
@@ -26,7 +28,7 @@
       </div>
     </div>
 
-    <div class="paper">
+    <div class="paper" id="paper">
       <img id="imageDisplay" src="" alt="Captured moment" />
       <p id="timeStamp"></p>
     </div>
@@ -38,6 +40,7 @@
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="index.js"></script>
   </body>
 </html>

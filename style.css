@@ -161,9 +161,6 @@ button{
   max-height: 350px;
   width: 200px;
   background-color: white;
-  border-radius: 5px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
   box-shadow: 0 0 50px  #d7d7d7;
   place-self:center;
   top: 300px;
@@ -182,6 +179,18 @@ p#timeStamp{
   text-align:center;
   font-family: cursive;
   font-family: 'caveat';
+}
+h6{
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+  font-weight: 400;
+  font-size: 30px;
+  font-family: 'caveat';
+  text-align: center;
+  letter-spacing: -1px;
+  line-height: 30px;
+  transform: translateY(100px);
 }
 .buttons{
   width: 250px;
@@ -215,4 +224,13 @@ p#timeStamp{
 
 .space{
   height: 100px;
+}
+
+#power-tooltip{
+  width: 100px;
+  position: absolute;
+  left: 34%;
+  top: 33%;
+  z-index: 1;
+  display: none;
 }

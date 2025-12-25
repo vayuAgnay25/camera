@@ -8,6 +8,7 @@ const retake = document.getElementById("retake");
 const download = document.getElementById("download");
 const buttonGroup = document.querySelector(".buttons");
 
+
 // --- 2. Global State & Constants ---
 let imageFile = null;
 let powerState = false;
@@ -138,13 +139,52 @@ retake.addEventListener("click", async () => {
 });
 
 // Download Logic
-download.addEventListener("click", () => {
-  if (!imageFile) return;
+  download.addEventListener("click", async () => {
+    const originalElement = document.getElementById('paper');
 
-  const link = document.createElement("a");
-  link.href = imageFile;
-  link.download = `Capture_${Date.now()}.png`; // Unique filename
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+    // 1. Clone the element
+    const clone = originalElement.cloneNode(true);
+
+    // 2. Style the clone to be invisible but on-screen
+    // HR Tip: Direct visibility:hidden mat use karna, warna canvas blank aayega
+    Object.assign(clone.style, {
+        position: 'absolute',
+        top: '-9999px',
+        left: '-9999px',
+        transform: 'none', // Reset GSAP rotations/moves
+        display: 'block'
+    });
+
+    document.body.appendChild(clone);
+
+    try {
+        // 3. Capture the static clone
+        const canvas = await html2canvas(clone, {
+            useCORS: true,
+            scale: 3, // High quality
+            backgroundColor: null
+        });
+
+        // 4. Download logic
+        const link = document.createElement('a');
+        link.download = `Polaroid_${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+    } catch (error) {
+        console.error("Snapshot failed:", error);
+    } finally {
+        // 5. Cleanup: Remove the hidden clone
+        document.body.removeChild(clone);
+    }
 });
+
+power.addEventListener('mouseenter',()=>{
+    document.getElementById('power-tooltip').style.display='block';
+})
+
+power.addEventListener('mouseleave',()=>{
+    document.getElementById('power-tooltip').style.display='none';
+})
