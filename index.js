@@ -63,11 +63,6 @@ const formatTime = () => {
 
 // Power On/Off Logic
 power.addEventListener("click", async () => {
-  gsap.to(".paper", {
-    y: -100,
-    rotate: 0,
-    duration: 0.8,
-  });
 
   if (!powerState) {
     try {
