@@ -100,7 +100,8 @@ capture.addEventListener("click", () => {
     tl.to(
       ".paper",
       {
-        y: 350,
+        y: 300,
+        rotation:-10,
         duration: 2,
       },
       "-=0.5"

@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
 *{
   margin:0px;
   padding: 0px;
   box-sizing: border-box;
   transition: all 0.5s linear;
+  scrollbar-width: none;
 }
 
 html,body{
@@ -10,7 +13,6 @@ html,body{
   width: 100%;
 }
 body{
-  padding: 10px;
   display:flex;
   flex-direction:column;
 }
@@ -190,7 +192,7 @@ p#timeStamp{
   gap:20px;
   margin:auto;
   position:relative;
-  top: 300px;
+  top: 600px;
   transform: translateY(-50px);
 }
 .buttons button{
